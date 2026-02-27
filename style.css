@@ -1,0 +1,68 @@
+/* Reset & Base */
+* { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
+body { background: #f8f5f0; color: #333; line-height:1.6; }
+
+/* Header */
+header { background: #7c6b5a; color: #fff; padding:20px 10px; text-align:center; position:relative; }
+header h1 { font-size:2em; }
+nav { margin-top:10px; }
+nav a { color:#fff; margin:0 15px; text-decoration:none; font-weight:bold; }
+nav a:hover { text-decoration:underline; }
+.menu-toggle { display:none; position:absolute; top:20px; right:20px; font-size:1.5em; background:none; border:none; color:#fff; cursor:pointer; }
+
+/* Home Section */
+.home { background: url('cow-field.jpg') center/cover no-repeat; padding:100px 20px; text-align:center; color:#fff; position:relative; }
+.home::before { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.5); }
+.home-content { position:relative; z-index:1; max-width:800px; margin:auto; animation: fadeIn 2s ease; }
+.home h2 { font-size:2.5em; margin-bottom:20px; font-family: 'Georgia', serif; letter-spacing:1px; }
+.home p { font-size:1.2em; margin-bottom:30px; line-height:1.6; }
+.btn { background:#7c6b5a; color:#fff; padding:12px 30px; border-radius:8px; text-decoration:none; font-weight:bold; transition:0.3s; margin-top:15px; display:inline-block; }
+.btn:hover { background:#5b4a3d; }
+
+/* About Section */
+.about { background: linear-gradient(135deg,#fdf6e3,#e3f2df); padding:60px 20px; border-radius:15px; max-width:900px; margin:40px auto; box-shadow:0 8px 20px rgba(0,0,0,0.1);}
+.about h2 { text-align:center; font-size:2.2em; color:#5b4a3d; margin-bottom:30px; font-family:'Georgia', serif; letter-spacing:1px; }
+.about-content p { font-size:1.1em; line-height:1.8; color:#4b3c2a; margin-bottom:20px; text-indent:20px; position:relative; transition:transform 0.3s; }
+.about-content p::before { content:"🍃"; position:absolute; left:-25px; }
+.about-content p:hover { transform: translateX(5px); }
+
+/* Products Section */
+.products { padding:60px 20px; background:#f5f2ed; max-width:1000px; margin:auto; border-radius:15px; }
+.products h2 { text-align:center; font-size:2.2em; color:#5b4a3d; margin-bottom:40px; font-family:'Georgia', serif; }
+.products-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:25px; }
+.product-card {
+  background:#fff;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.1);
+  text-align:center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display:flex; 
+  flex-direction:column; 
+  justify-content:space-between; 
+  min-height:300px; /* ensures uniform height */
+}
+.product-card h3 { color:#7c6b5a; margin-bottom:15px; font-family:'Georgia', serif; }
+.product-card p { color:#4b3c2a; line-height:1.5; font-size:1em; flex-grow:1; }
+
+/* Contact Section */
+.contact { background: linear-gradient(135deg,#fdf6e3,#e3f2df); padding:60px 20px; border-radius:15px; max-width:900px; margin:50px auto; box-shadow:0 8px 20px rgba(0,0,0,0.1); }
+.contact h2 { text-align:center; font-size:2.2em; color:#5b4a3d; margin-bottom:20px; font-family:'Georgia', serif; }
+.contact p { text-align:center; color:#4b3c2a; font-size:1.1em; margin-bottom:30px; }
+.contact form { display:flex; flex-direction:column; gap:15px; }
+.contact input, .contact textarea { padding:12px; border-radius:8px; border:1px solid #ccc; font-size:1em; }
+.contact button { padding:12px; background:#7c6b5a; color:#fff; border:none; border-radius:8px; font-size:1em; cursor:pointer; transition:0.3s; }
+.contact button:hover { background:#5b4a3d; }
+
+/* Footer */
+footer { text-align:center; padding:20px; background:#7c6b5a; color:#fff; margin-top:30px; }
+
+/* Responsive */
+@media(max-width:768px){
+  nav { display:none; flex-direction:column; }
+  nav.active { display:flex; }
+  .menu-toggle { display:block; }
+}
+
+/* Animations */
+@keyframes fadeIn { from{opacity:0; transform:translateY(-20px);} to{opacity:1; transform:translateY(0);} }
