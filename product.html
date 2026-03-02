@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>उत्पाद विवरण</title>
+
+<style>
+body{
+  font-family: Arial;
+  padding:20px;
+  background:#f5f5f5;
+}
+
+.container{
+  max-width:700px;
+  margin:auto;
+  background:white;
+  padding:25px;
+  border-radius:10px;
+  box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h1{
+  color:#2e7d32;
+  margin-bottom:10px;
+}
+
+.price{
+  font-size:20px;
+  font-weight:bold;
+  margin:15px 0;
+}
+
+input{
+  padding:8px;
+  width:70px;
+  margin-top:10px;
+}
+
+button{
+  margin-top:20px;
+  background:#2e7d32;
+  color:white;
+  border:none;
+  padding:12px 18px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.back{
+  display:inline-block;
+  margin-top:20px;
+  text-decoration:none;
+  background:#555;
+  color:white;
+  padding:10px 15px;
+  border-radius:5px;
+}
+
+ul{
+  margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1 id="productName"></h1>
+
+  <p id="productDesc"></p>
+
+  <div class="price" id="productPrice"></div>
+
+  <h3>मुख्य विशेषताएँ:</h3>
+  <ul id="productFeatures"></ul>
+
+  <div>
+    मात्रा:
+    <input type="number" id="quantity" value="1" min="1">
+  </div>
+
+  <h3 id="totalPrice"></h3>
+
+  <button onclick="orderWhatsApp()">
+    WhatsApp से ऑर्डर करें
+  </button>
+
+  <br>
+  <a href="index.html" class="back">← वापस जाएं</a>
+
+</div>
+
+<!-- IMPORTANT -->
+<script src="product.js"></script>
+
+</body>
+</html>
