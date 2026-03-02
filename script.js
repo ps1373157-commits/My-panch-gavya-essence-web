@@ -1,43 +1,118 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Mobile menu toggle
+  // ===== MENU TOGGLE =====
   const menuToggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('nav');
-  menuToggle.addEventListener('click', () => {
-    nav.classList.toggle('active');
-  });
+  if(menuToggle){
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+  }
 
-  // Products Array (Hindi, sab products included)
+  // ===== PRODUCTS DATA =====
   const products = [
-    {name:"गोबर साबुन", desc:"🌿 शुद्ध, सल्फेट-फ्री साबुन, गोबर से बना – कोमल, प्राकृतिक और पर्यावरण के अनुकूल।", link:"#contact"},
-    {name:"घी एसेन्स", desc:"✨ पंच गाय का ऑर्गेनिक घी – पोषण और शुद्धता का संगम।", link:"#contact"},
-    {name:"गाय का मूत्र उर्वरक", desc:"🌱 100% प्राकृतिक – मिट्टी मजबूत करे, फसल उन्नति में मदद।", link:"#contact"},
-    {name:"दही और दूध एसेन्स", desc:"🥛 शुद्ध गाय का दूध और दही – स्किनकेयर और पोषण।", link:"#contact"},
-    {name:"पंच गाय शैम्पू", desc:"💧 सल्फेट-फ्री – बालों को मजबूत और स्वस्थ रखें।", link:"#contact"},
-    {name:"पंच गाय तेल", desc:"🌿 प्राकृतिक तेल – त्वचा और बालों को पोषण।", link:"#contact"},
-    {name:"अगरबत्ती और धूपबत्ती", desc:"🕯 हाथ से बनी प्राकृतिक अगरबत्ती – घर में खुशबू और सकारात्मकता।", link:"#contact"},
-    {name:"हवन सामग्री", desc:"🔥 विशेष पंच गाय हवन सामग्री – पवित्र और सुगंधित।", link:"#contact"},
-    {name:"पंच गाय फेस क्रीम", desc:"🌸 प्राकृतिक पंच गाय फेस क्रीम – त्वचा के लिए पोषण और नमी।", link:"#contact"},
-    {name:"पंच गाय साबुन सेट", desc:"🛁 विभिन्न प्रकार के पंच गाय साबुन का सेट – त्वचा की देखभाल के लिए।", link:"#contact"},
-    {name:"पंच गाय हैंड सैनीटाइज़र", desc:"👐 प्राकृतिक पंच गाय सामग्री से बना – सुरक्षित और शुद्ध।", link:"#contact"},
-    {name:"अन्य उत्पाद", desc:"✨ अन्य पंच गाय आधारित उत्पाद – शुद्ध, ऑर्गेनिक और पर्यावरण के अनुकूल।", link:"#contact"}
+    {
+      id:1,
+      name:"आयुर्वेदिक साबुन",
+      desc:"🌿 शुद्ध, रसायन-मुक्त और कोमल साबुन। यह साबुन रोज़ाना उपयोग से त्वचा को साफ़, पोषित और चमकदार बनाता है।",
+      price:99,
+      link:"product.html?id=1"
+    },
+    {
+      id:2,
+      name:"पंच गाय शैम्पू",
+      desc:"✨ सल्फेट-फ्री हर्बल शैम्पू जो बालों को मजबूत, घना और चमकदार बनाता है।",
+      price:149,
+      link:"product.html?id=2"
+    },
+    {
+      id:3,
+      name:"पंच गाय तेल",
+      desc:"🌿 पोषणयुक्त तेल बालों और त्वचा दोनों के लिए लाभकारी।",
+      price:199,
+      link:"product.html?id=3"
+    },
+    {
+      id:4,
+      name:"अगरबत्ती",
+      desc:"🕯️ प्राकृतिक सुगंध वाली अगरबत्ती जो घर और पूजा स्थल में सकारात्मक वातावरण बनाती है।",
+      price:79,
+      link:"product.html?id=4"
+    },
+    {
+      id:5,
+      name:"हवन सामग्री",
+      desc:"🔥 शुद्ध और विशेष हवन सामग्री।",
+      price:299,
+      link:"product.html?id=5"
+    }
   ];
 
-  // Generate product cards dynamically
+  // ===== INDEX.HTML: PRODUCTS GRID =====
   const grid = document.querySelector('.products-grid');
-  products.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    card.innerHTML = `<h3>${p.name}</h3><p>${p.desc}</p><a href="${p.link}" class="btn">ऑर्डर करें</a>`;
-    grid.appendChild(card);
-  });
+  if(grid){
+    products.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <h3>${p.name}</h3>
+        <p>${p.desc}</p>
+        <a href="${p.link}" class="btn btn-product">विवरण देखें</a>
+      `;
+      grid.appendChild(card);
+    });
+  }
 
-  // Contact form alert
-  const form = document.getElementById('contactForm');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('धन्यवाद! हम जल्द ही आपसे संपर्क करेंगे।');
-    form.reset();
-  });
+  // ===== PRODUCT.HTML: PRODUCT DETAILS + QUANTITY =====
+  const productPageName = document.getElementById("productName");
+  const productPageDesc = document.getElementById("productDesc");
+  const productPagePrice = document.getElementById("productPrice");
+  const qtyInput = document.getElementById("quantity");
+  const totalPrice = document.getElementById("totalPrice");
+
+  if(productPageName && productPageDesc && productPagePrice){
+    // URL से id लेना
+    const params = new URLSearchParams(window.location.search);
+    const id = Number(params.get("id"));
+    const currentProduct = products.find(p => p.id === id);
+
+    if(!currentProduct){
+      alert("Product load nahi hua!");
+    } else {
+      // Show product data
+      productPageName.innerText = currentProduct.name;
+      productPageDesc.innerText = currentProduct.desc;
+      productPagePrice.innerText = "कीमत: ₹" + currentProduct.price;
+
+      // Total price
+      function updateTotal(){
+        const qty = Number(qtyInput.value) || 1;
+        totalPrice.innerText = "कुल कीमत: ₹" + (qty * currentProduct.price);
+      }
+
+      updateTotal();
+
+      if(qtyInput){
+        qtyInput.addEventListener("input", updateTotal);
+      }
+
+      // WhatsApp order function
+      window.orderWhatsApp = function(){
+        const qty = Number(qtyInput.value) || 1;
+        const total = qty * currentProduct.price;
+        const phone = "919170545988";
+        const message = `नमस्ते,
+मुझे ${currentProduct.name} ऑर्डर करना है।
+
+मात्रा: ${qty}
+कुल कीमत: ₹${total}
+
+कृपया आगे की प्रक्रिया बताएं।`;
+
+        const url = "https://api.whatsapp.com/send?phone=" + phone + "&text=" + encodeURIComponent(message);
+        window.location.href = url;
+      }
+    }
+  }
 
 });
